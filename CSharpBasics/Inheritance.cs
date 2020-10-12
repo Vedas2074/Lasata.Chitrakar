@@ -1,55 +1,108 @@
 using System;
+
 public abstract class Shape
 {
     public abstract double GetArea();
     public abstract double GetPerimeter();
-    public void PrintDetails()
+
+    public virtual void PrintDetails()
     {
-        Console.WriteLine("Print details for shape...");
+        Console.WriteLine("Printing details for shape..");
     }
+
 }
-public class Rectangle : Shape
+
+public interface IDiagonalComputable
 {
-    
-    public Rectangle(double l,double b)
+    public double GetDiagonalLength();
+}
+
+// public class Square : Shape
+// {
+//     public double Side {get; set; }
+//     public override double GetArea() => Side * Side;
+
+//     public override double GetPerimeter() => 4 * Side;
+// }
+
+public class Rectangle : Shape, IDiagonalComputable
+{
+    public Rectangle() {}
+    public Rectangle(double l, double b)
     {
         this.Length = l;
         this.Breadth = b;
+        
     }
-    public double Length { get; set; }
-    public double Breadth { get; set; }
+    public double Length {get; set; }
+    public double Breadth {get; set; }
     public override double GetArea() => Length * Breadth;
+
+    public double GetDiagonalLength() => Math.Sqrt(Length*Length + Breadth*Breadth);
+    
     public override double GetPerimeter() => 2 * (Length + Breadth);
 
-    public new void PrintDetails()
+    public override void PrintDetails()
     {
-        Console.WriteLine("Print details for shape...");
-        Console.WriteLine($"Length: {Length}, Breadth: {Breadth}");
-        Console.WriteLine($"Area: {this.GetArea()}, Perimeter: {this.GetPerimeter()}");
+        Console.WriteLine("Printing details for Rectangle: ");
+        Console.WriteLine($"Length : {Length}, Breadth : {Breadth}");
+        Console.WriteLine($"Area : {this.GetArea()}, Perimeter: {this.GetPerimeter()}");
     }
 }
+
 public class Square : Rectangle
 {
-    public Square(double s) : base(s, s)
+    // public Square(double s)
+    // {
+    //     this.Side = s;
+    // }
+    // public double Side {get; set; }
+
+    public Square(double s) : base(s,s)
     {
-        //base.GetArea();
+
     }
-    //public double Side { get; set; }
-    //public override double GetArea() => Side * Side;
-    //public override double GetPerimeter() => 4 * Side;
 }
+
+
 public class Circle : Shape
 {
     public Circle(double r)
     {
         Radius = r;
     }
-
-    public double Radius { get; set; }
+    public double Radius {get; set; }
     public override double GetArea() => Math.PI * Radius * Radius;
-    public override double GetPerimeter() => 2 * Math.PI * Radius;
+
+    public override double GetPerimeter() => 2 * Math.PI * Radius; 
 }
 
+//Single inheritance 
+class A 
+{
 
+}
 
-// multiple inheritance not allowed but can be used with interface
+class B : A
+{
+
+}
+
+class C : B
+{
+
+}
+
+class D : A, IX, IY
+{
+
+}
+
+interface IX
+{
+
+}
+interface IY
+{
+
+}
