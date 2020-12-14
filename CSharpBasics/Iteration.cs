@@ -3,7 +3,7 @@ class IterationStatement
 {
     //Pascal case: ItrationStatement (class, methods)
     //Camel case: iterationStement(variables)
-    static void Main()
+    static void Main123()
     {
         IterationStatement iterationStatement = new IterationStatement();
         iterationStatement.LearnWhileLoops();

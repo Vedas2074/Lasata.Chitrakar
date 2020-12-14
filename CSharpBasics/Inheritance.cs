@@ -78,6 +78,9 @@ public class Circle : Shape
 }
 
 //Single inheritance 
+//Multilevel inheritance
+//Multiple inheritance
+
 class A 
 {
 
@@ -93,6 +96,7 @@ class C : B
 
 }
 
+//class- is a relationship, Intrface- has a relationship
 class D : A, IX, IY
 {
 
