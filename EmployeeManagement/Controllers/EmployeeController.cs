@@ -12,7 +12,7 @@ namespace EmployeeManagement.Controllers
     {
         public IActionResult Index()
         {
-        
+
             var employees = Employee.GetEmployees();
 
             return View(employees);
@@ -39,6 +39,13 @@ namespace EmployeeManagement.Controllers
             
             return "Record Saved";
 
+        }
+
+        private readonly EMContext db;
+
+        public EmployeeController(EMContext _db)
+        {
+            db = _db;
         }
            
     }
